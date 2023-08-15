@@ -23,11 +23,18 @@ if ( number < 20 ) {
 } else if (number >= 100 && number <= 999) {
   if (number % 100 === 0) {
     return `${ones[Math.floor(number / 100)]} hundred`;
+  } else if (number % 100 < 20) {
+    return `${ones[Math.floor(number / 100)]} hundred ${teens[number % 10]}`;
   } else {
     return `${ones[Math.floor(number / 100)]} hundred ${tens[Math.floor(number / 10) % 10]} ${ones[number % 10]}`;
   }
 }
 };
+
+
+console.log(toReadable(617));
+console.log(toReadable(618));
+console.log(toReadable(619));
 
 
 
