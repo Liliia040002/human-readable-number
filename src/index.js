@@ -1,5 +1,5 @@
 module.exports = function toReadable (number) {
-  let ones = ['', 'one', 'two','three', 'four', 'five', 'six', 'seven', 'eight', 'nine'];
+  let ones = ['', 'one', 'two','three', 'four', 'five', 'six', 'seven', 'eight', 'nine', 'ten'];
   let teens = ['', 'eleven', 'twelve', 'thirteen', 'fourteen', 'fifteen', 'sixteen', 'seventeen', 'eighteen', 'nineteen'];
   let tens = ['', 'ten', 'twenty', 'thirty', 'forty', 'fifty', 'sixty', 'seventy', 'eighty', 'ninety'];
   
@@ -9,26 +9,26 @@ module.exports = function toReadable (number) {
 if ( number < 20 ) {
   if (number === 0) {
       return 'zero';
-  } else if (number < 10) {
-      return (ones[number]).trim();
+  } else if (number <= 10) {
+      return (ones[number]).trim().replace('  ', ' ');
   } else if (number > 10 && number < 20) {
-      return (teens[number % 10]).trim();
+      return (teens[number % 10]).trim().replace('  ', ' ');
   } 
 } else if (number >= 20 && number < 100) {
     if (number % 10 === 0) {
-      return (tens[number/10]).trim();
+      return (tens[number/10]).trim().replace('  ', ' ');
   } else if (number < 100 && number % 10 != 0) {
-      return (`${tens[Math.floor(number / 10)]} ${ones[number % 10]}`).trim();
+      return (`${tens[Math.floor(number / 10)]} ${ones[number % 10]}`).trim().replace('  ', ' ');
   }
 } else if (number >= 100 && number <= 999) {
   if (number % 100 === 0) {
-    return (`${ones[Math.floor(number / 100)]} hundred`).trim();
+    return (`${ones[Math.floor(number / 100)]} hundred`).trim().replace('  ', ' ');
   } else if (number % 10 > 10) {
-    return (`${ones[Math.floor(number / 100)]} hundred ${ones[number % 100]}`).trim();
+    return (`${ones[Math.floor(number / 100)]} hundred ${ones[number % 100]}`).trim().replace('  ', ' ');
   } else if (number % 100 > 10 && number % 100 < 20) {
-    return (`${ones[Math.floor(number / 100)]} hundred ${teens[number % 10]}`).trim();
+    return (`${ones[Math.floor(number / 100)]} hundred ${teens[number % 10]}`).trim().replace('  ', ' ');
   } else {
-    return (`${ones[Math.floor(number / 100)]} hundred ${tens[Math.floor(number / 10) % 10]} ${ones[number % 10]}`).trim();
+    return (`${ones[Math.floor(number / 100)]} hundred ${tens[Math.floor(number / 10) % 10]} ${ones[number % 10]}`).trim().replace('  ', ' ');
   }
 }
 };
